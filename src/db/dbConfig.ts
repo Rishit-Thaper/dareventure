@@ -2,12 +2,18 @@ import mongoose from "mongoose";
 import { config } from "@/conf/config";
 export const dbConnect = async () => {
   console.log("Connecting to DB...");
+  const connectionString = `${config.DB_URL}/${config.DB_NAME}`;
+  console.log("connectionString", connectionString);
   try {
-    const connection = await mongoose.connect(
-      `${config.DB_URL}/${config.DB_NAME}`
-    );
-    console.log("Connected with DB at: ", connection.connection.host);
+    await mongoose
+      .connect(connectionString)
+      .then(() => {
+        console.log("Connected with DB");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   } catch (error) {
-    console.error("Error occured while connecting!!");
+    console.error("Error occured while connecting:", error);
   }
 };

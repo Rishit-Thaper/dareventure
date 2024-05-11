@@ -9,6 +9,10 @@ const gameSchema = new Schema(
       type: String,
       required: true,
     },
+    rating: {
+      type: String,
+      required: true,
+    },
     creatorId: {
       type: String,
       required: true,
@@ -19,4 +23,5 @@ const gameSchema = new Schema(
   }
 );
 
-export const Game = mongoose.model("game", gameSchema);
+const Game = mongoose.models.game || mongoose.model("game", gameSchema);
+export default Game;
