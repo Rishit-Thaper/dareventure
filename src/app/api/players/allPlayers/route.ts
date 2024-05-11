@@ -1,20 +1,20 @@
 import { dbConnect } from "@/db/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
-import { allGames } from "@/services/gameApiServices";
+import { allPlayers } from "@/services/playerApiServices";
 
 dbConnect();
 
 export async function POST(req: NextRequest) {
   try {
-    const { creatorId } = await req.json();
-    const response = await allGames(creatorId);
+    const { gameId } = await req.json();
+    const response = await allPlayers(gameId);
     if (response) {
-      return NextResponse.json({ success: true, allGames: response }, { status: 200 });
+      return NextResponse.json({ success: true, allPlayers: response }, { status: 200 });
     } else {
       return NextResponse.json(
         {
           success: false,
-          error: "No recent games found",
+          error: "No players found",
         },
         {
           status: 404,

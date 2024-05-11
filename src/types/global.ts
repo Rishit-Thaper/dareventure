@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 export type GameType = {
   name: string;
   type: string;
@@ -7,5 +9,5 @@ export type GameType = {
 
 export type PlayerType = {
   name: string;
-  gameId: string;
+  gameId: mongoose.mongo.BSON.ObjectId;
 };

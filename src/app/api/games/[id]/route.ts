@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          game: "No game found or invalid id",
+          error: "No game found or invalid game id",
         },
         { status: 400 }
       );

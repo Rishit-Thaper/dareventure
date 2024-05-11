@@ -11,7 +11,10 @@ export async function POST(req: NextRequest) {
 
     const response = await createGame(data);
     if (response) {
-      return NextResponse.json({ success: true, response }, { status: 200 });
+      return NextResponse.json(
+        { success: true, createdGame: response },
+        { status: 200 }
+      );
     } else {
       return NextResponse.json(
         {
