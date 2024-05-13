@@ -1,6 +1,6 @@
 import { dbConnect } from "@/db/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
-import { allGames } from "@/services/gameApiServices";
+import { allGames } from "@/controllers/gameApiServices";
 
 dbConnect();
 

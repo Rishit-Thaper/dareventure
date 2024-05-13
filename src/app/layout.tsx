@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { QueryProvider } from "@/provider/ReactQueryProvider";
-import { ReactChakraProvider } from "@/provider/ChakraProvider";
+import "./App.scss";
 export const metadata: Metadata = {
   title: "Dareventure",
   description: "The ultimate game pack for those who dare to go wild!",
@@ -17,9 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ReactChakraProvider>
-          <QueryProvider>{children}</QueryProvider>
-        </ReactChakraProvider>
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );

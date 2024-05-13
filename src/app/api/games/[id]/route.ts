@@ -1,6 +1,6 @@
 import { dbConnect } from "@/db/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
-import { getGame } from "@/services/gameApiServices";
+import { getGame } from "@/controllers/gameApiServices";
 
 export async function GET(req: NextRequest) {
   try {

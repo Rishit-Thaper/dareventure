@@ -1,6 +1,6 @@
 import { dbConnect } from "@/db/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
-import { deletePlayer } from "@/services/playerApiServices";
+import { deletePlayer } from "@/controllers/playerApiServices";
 dbConnect();
 export async function DELETE(req: NextRequest) {
   try {
