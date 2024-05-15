@@ -1,5 +1,5 @@
 {
-  "PG": [
+  "pg": [
     "Would you rather be able to fly or be invisible?",
     "Would you rather have the ability to speak all languages or be able to talk to animals?",
     "Would you rather live in a world where everyone's emotions are visible or everyone's thoughts are audible?",
@@ -93,7 +93,7 @@
     "Would you rather be able to control fire or water?",
     "Would you rather always have to say everything on your mind or never speak again?"
   ],
-  "Adult (18+)": [
+  "r": [
     "Would you rather have the ability to know everyone's deepest secrets or the power to erase one memory from anyone?",
     "Would you rather have the ability to have mind-blowing sex but never find true love or have a loving relationship but mediocre sex?",
     "Would you rather be extremely wealthy but hated by everyone or poor but loved by all?",

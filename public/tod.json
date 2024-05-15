@@ -1,5 +1,5 @@
 {
-  "PG": {
+  "pg": {
     "truth": [
       "Have you ever pretended to be sick to get out of something?",
       "What's the most embarrassing thing that has happened to you at school?",
@@ -202,7 +202,7 @@
       "Pretend to be a penguin and waddle around."
     ]
   },
-  "R": {
+  "r": {
     "truth": [
       "What's the most embarrassing thing you've done in a relationship?",
       "Have you ever had a one-night stand?",

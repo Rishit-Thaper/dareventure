@@ -1,5 +1,5 @@
 {
-  "PG": [
+  "pg": [
     "Never have I ever forgotten to do my homework.",
     "Never have I ever laughed so hard that I couldn't stop.",
     "Never have I ever played a prank on someone.",
@@ -100,7 +100,7 @@
     "Never have I ever tried to do a cartwheel.",
     "Never have I ever tried to see if I could run faster than a speeding car."
   ],
-  "Adult": [
+  "r": [
     "Never have I ever skinny-dipped.",
     "Never have I ever had a one-night stand.",
     "Never have I ever sent a naughty text to the wrong person.",

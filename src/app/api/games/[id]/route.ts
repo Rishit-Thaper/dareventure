@@ -1,7 +1,7 @@
 import { dbConnect } from "@/db/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
 import { getGame } from "@/controllers/gameApiServices";
-
+dbConnect();
 export async function GET(req: NextRequest) {
   try {
     const id = req.url.split("games/")[1];
