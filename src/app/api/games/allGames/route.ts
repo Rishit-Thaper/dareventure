@@ -6,10 +6,14 @@ dbConnect();
 
 export async function POST(req: NextRequest) {
   try {
-    const { creatorId } = await req.json();
-    const response = await allGames(creatorId);
+    const { id } = await req.json();
+    console.log(id);
+    const response = await allGames(id);
     if (response) {
-      return NextResponse.json({ success: true, allGames: response }, { status: 200 });
+      return NextResponse.json(
+        { success: true, allGames: response },
+        { status: 200 }
+      );
     } else {
       return NextResponse.json(
         {

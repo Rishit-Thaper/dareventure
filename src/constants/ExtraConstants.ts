@@ -1,15 +1,16 @@
-
 export const games = [
   {
     gameName: "Truth Or Dare",
-    url: "tod"
+    url: "tod",
   },
   {
     gameName: "Never Have I Ever!!",
-    url: "nhie"
+    url: "nhie",
   },
   {
     gameName: "Would You Rather ?",
-    url: "wyr"
+    url: "wyr",
   },
 ];
+
+export const creatorKey = "creator";

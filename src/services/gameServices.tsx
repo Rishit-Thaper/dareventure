@@ -13,6 +13,6 @@ export const apiCreateGame = async (data: GameType) => {
 };
 
 export const apiGetAllGames = async (id: string) => {
-  const response = await postRequest(GET_ALL_GAMES, id);
+  const response = await postRequest(GET_ALL_GAMES, { id });
   return response;
 };
