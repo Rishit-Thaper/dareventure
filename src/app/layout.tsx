@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { QueryProvider } from "@/provider/ReactQueryProvider";
 import "./App.scss";
+import Header from "@/components/Header";
 export const metadata: Metadata = {
   title: "Dareventure",
   description: "The ultimate game pack for those who dare to go wild!",
@@ -17,6 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header />
+
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

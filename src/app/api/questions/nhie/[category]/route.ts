@@ -12,21 +12,14 @@ export async function GET(req: NextRequest) {
       );
     }
     const jsonDirectory = path.join(process.cwd(), "public");
-    console.log("jsonDirectory", jsonDirectory);
-
     const fileContent = await fs.readFile(
       path.join(jsonDirectory, "nhie.json"),
       "utf-8"
     );
-    console.log("fileContent", fileContent);
     const questions = JSON.parse(fileContent);
-    console.log("questions", questions);
     const randomQuestions = questions[category];
-    console.log("randomQuestions", randomQuestions);
     const randomIndex = Math.floor(Math.random() * randomQuestions.length);
-    console.log("randomIndex", randomIndex);
     const randomQuestion = randomQuestions[randomIndex];
-    console.log("randomQuestion", randomQuestion);
     return NextResponse.json(
       { success: true, randomQuestion: randomQuestion },
       { status: 200 }
