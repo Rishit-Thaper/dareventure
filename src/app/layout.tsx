@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { QueryProvider } from "@/provider/ReactQueryProvider";
 import "./App.scss";
 import Header from "@/components/Header";
+import { Toaster } from "react-hot-toast";
 export const metadata: Metadata = {
   title: "Dareventure",
   description: "The ultimate game pack for those who dare to go wild!",
@@ -19,8 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-
         <QueryProvider>{children}</QueryProvider>
+        <Toaster position="bottom-center" reverseOrder={false} />
       </body>
     </html>
   );

@@ -48,3 +48,49 @@ body {
     }
   }
 }
+
+.addForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  form {
+    h4{
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    background-color: $color-5;
+    padding: 2rem;
+    border-radius: 10px;
+    input[type="text"] {
+      width: 100%;
+      padding: 0.4rem 0.8rem;
+      background: none;
+      color: $color-2;
+      outline: none;
+      border: 1px solid $color-4;
+      transition: 0.3s ease-in-out;
+
+      &:focus{
+        border: 1px solid $color-2
+      }
+    }
+    label{
+      margin-left: 0.5rem;
+    }
+    p{
+      margin-top: 1.5rem;
+    }
+    border: 2px solid $color-4;
+    div {
+      display: flex;
+      justify-content: center;
+      padding: 0.4rem;
+    }
+    button{
+      width: 100%;
+      @include buttonStyle($color-4, $color-2, $color-5);
+      margin-top: 1rem;
+    }
+  }
+}

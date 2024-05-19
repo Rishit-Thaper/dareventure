@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export type GameType = {
   name: string;
-  type: string;
+  type: string | string[];
   rating: string;
   creatorId: string;
 };
