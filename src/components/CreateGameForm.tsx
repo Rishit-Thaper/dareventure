@@ -24,13 +24,10 @@ const CreateGameForm: React.FC<formProps> = ({ type }) => {
   } else {
     id = creatorId;
   }
-  console.log("id", id);
-  console.log("creatorId", creatorId);
 
   const createGame: SubmitHandler<GameType> = async (formData) => {
     formData.type = type;
     formData.creatorId = id;
-    console.log(formData);
     toast.loading("Creating Game...");
     createGameMutation.mutate(formData, {
       onSuccess: () => {

@@ -7,7 +7,6 @@ dbConnect();
 export async function POST(req: NextRequest) {
   try {
     const { id } = await req.json();
-    console.log(id);
     const response = await allGames(id);
     if (response) {
       return NextResponse.json(

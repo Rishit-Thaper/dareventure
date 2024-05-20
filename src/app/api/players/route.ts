@@ -13,9 +13,7 @@ export async function POST(req: NextRequest) {
       name,
       gameId: mongoose.Types.ObjectId.createFromHexString(gameId),
     };
-    console.log("data", data);
     const response = await createPlayer(data);
-    console.log("response", response);
     if (response) {
       return NextResponse.json(
         { success: true, createdPlayer: response },

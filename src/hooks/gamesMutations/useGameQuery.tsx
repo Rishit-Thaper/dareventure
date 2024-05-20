@@ -8,6 +8,7 @@ export const useGameQuery = (userId?: string, id?: string) => {
       return apiGetSingleGame(id!);
     },
     enabled: !!id,
+    
   });
   const getAllGames = useQuery({
     queryKey: ["games", userId],

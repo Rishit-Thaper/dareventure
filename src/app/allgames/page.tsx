@@ -1,15 +1,18 @@
 "use client";
-import { creatorKey } from "@/constants/ExtraConstants";
-import { getDataFromLocal } from "@/storage/storage";
-import { useGameQuery } from "@/hooks/gamesMutations/useGameQuery";
-import React from "react";
+import Loader from "@/components/Loader";
+import dynamic from "next/dynamic";
+
+const GameList = dynamic(() => import("@/components/GameList"), {
+  loading: () => <Loader />,
+  ssr: false,
+});
 
 const AllGames = () => {
-  const id = getDataFromLocal(creatorKey);
-  const { getAllGames } = useGameQuery(id!);
-  const { data } = getAllGames;
-  console.log(data);
-  return <div>All Games Here</div>;
+  return (
+    <div className="gameComponent">
+      <GameList />
+    </div>
+  );
 };
 
 export default AllGames;
