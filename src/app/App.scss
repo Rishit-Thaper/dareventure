@@ -8,6 +8,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Poppins;
+  text-decoration: none;
 }
 body {
   background-color: $color-1;
@@ -34,7 +35,6 @@ body {
     border-radius: 10px;
     background: $color-5;
     padding: 2rem;
-    border: none;
     margin: 1rem;
     transition: 0.3s ease-in-out;
     border: 1px solid $color-5;
@@ -55,7 +55,7 @@ body {
   align-items: center;
   margin: 2rem;
   form {
-    h4{
+    h4 {
       margin-bottom: 1rem;
       text-align: center;
     }
@@ -71,14 +71,14 @@ body {
       border: 1px solid $color-4;
       transition: 0.3s ease-in-out;
 
-      &:focus{
-        border: 1px solid $color-2
+      &:focus {
+        border: 1px solid $color-2;
       }
     }
-    label{
+    label {
       margin-left: 0.5rem;
     }
-    p{
+    p {
       margin-top: 1.5rem;
     }
     border: 2px solid $color-4;
@@ -87,7 +87,7 @@ body {
       justify-content: center;
       padding: 0.4rem;
     }
-    button{
+    button {
       width: 100%;
       @include buttonStyle($color-4, $color-2, $color-5);
       margin-top: 1rem;
@@ -100,4 +100,30 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+//gamelist & gamecard
+.gameListComponent {
+  margin: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+.gameCard {
+  a{
+    color: $color-2;
+  }
+  border-radius: 10px;
+  width: 280px;
+  padding: 1rem;
+  background: $color-5;
+  height: auto;
+  transition: 0.3s ease-in-out;
+  border: 1px solid $color-5;
+  &:hover {
+    background-color: $color-6;
+    border: 1px solid $color-4;
+  }
 }

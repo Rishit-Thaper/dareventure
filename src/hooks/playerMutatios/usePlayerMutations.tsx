@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { PlayerType } from "@/types/global";
+import { PlayerBody } from "@/types/global";
 import { apiAddPlayer, apiDeletePlayer } from "@/services/playerServices";
 
-export const useGameMutations = () => {
+export const usePlayerMutations = () => {
   const queryClient = useQueryClient();
   const addPlayerMutation = useMutation({
-    mutationFn: (data: PlayerType) => {
+    mutationFn: (data: PlayerBody) => {
       return apiAddPlayer(data);
     },
     onSuccess: () => {

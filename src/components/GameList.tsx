@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { creatorKey } from "@/constants/ExtraConstants";
 import { getDataFromLocal } from "@/storage/storage";
@@ -9,20 +9,21 @@ import GameCard from "./GameCard";
 const GameList = () => {
   const id = getDataFromLocal(creatorKey);
   const { getAllGames } = useGameQuery(id!);
-  const { data } = getAllGames;
+  const { data, isLoading } = getAllGames;
   const games = data?.allGames?.allGamesData as GameType[];
-  console.log(games);
-  console.log(data);
+
+  if (!isLoading && (!games || games.length === 0)) {
+    return <p>No Games Found</p>;
+  }
+
   return (
-    <div className="gameComponent">
+    <div className="gameListComponent">
       <>
-        {games && games?.length > 0 ? (
-          games?.map((game: GameType, key: number) => (
+        {games &&
+          games.length > 0 &&
+          games.map((game: GameType, key: number) => (
             <GameCard key={key} game={game} />
-          ))
-        ) : (
-          <p>NO GAMES</p>
-        )}
+          ))}
       </>
     </div>
   );

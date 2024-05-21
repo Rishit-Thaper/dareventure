@@ -13,4 +13,11 @@ export const games = [
   },
 ];
 
+export const TOD = 'tod';
+export const WYR = 'wyr';
+export const NHIE = 'nhie';
+
+export const ADULT = 'adult';
+export const PG = 'pg';
+
 export const creatorKey = "creator";

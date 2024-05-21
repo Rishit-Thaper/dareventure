@@ -1,6 +1,6 @@
 "use client";
 import { randomCreatorId } from "@/conf/config";
-import { GameType } from "@/types/global";
+import { GameBody } from "@/types/global";
 import { useGameMutations } from "@/hooks/gamesMutations/useGameMutations";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -14,7 +14,7 @@ interface formProps {
 const CreateGameForm: React.FC<formProps> = ({ type }) => {
   const router = useRouter();
 
-  const { register, handleSubmit } = useForm<GameType>();
+  const { register, handleSubmit } = useForm<GameBody>();
   const { createGameMutation } = useGameMutations();
   const creatorId = getDataFromLocal(creatorKey);
   let id;
@@ -25,7 +25,7 @@ const CreateGameForm: React.FC<formProps> = ({ type }) => {
     id = creatorId;
   }
 
-  const createGame: SubmitHandler<GameType> = async (formData) => {
+  const createGame: SubmitHandler<GameBody> = async (formData) => {
     formData.type = type;
     formData.creatorId = id;
     toast.loading("Creating Game...");

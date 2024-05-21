@@ -1,7 +1,7 @@
 import Game from "@/models/gameModel";
 import Player from "@/models/playerModel";
-import { GameType } from "@/types/global";
-export const createGame = async (data: GameType) => {
+import { GameBody } from "@/types/global";
+export const createGame = async (data: GameBody) => {
   try {
     const createdGame = await Game.create(data);
     if (createdGame) {
