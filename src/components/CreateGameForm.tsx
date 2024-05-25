@@ -58,7 +58,7 @@ const CreateGameForm: React.FC<formProps> = ({ type }) => {
             <input
               type="radio"
               {...register("rating")}
-              value="adult"
+              value="r"
               id="adult"
               required
             />

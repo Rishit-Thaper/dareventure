@@ -44,9 +44,11 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
             })}
           />
           <button>Submit</button>
-          <Link href=''><button>Start the Game</button></Link>
         </form>
       </dialog>
+      <Link href={`/game/${gameId}`}>
+        <button>Start the Game</button>
+      </Link>
     </>
   );
 };
