@@ -1,26 +1,27 @@
 import React from "react";
 import { usePlayerQuery } from "@/hooks/playerMutatios/usePlayerQuery";
 import { PlayerType } from "@/types/global";
+import PlayerCard from "./PlayerCard";
+import CreatePlayer from "./CreatePlayer";
 interface GamePageProps {
   gameId: string | string[];
 }
-const GamePage: React.FC<GamePageProps> = ({ gameId }) => {
+const PlayerList: React.FC<GamePageProps> = ({ gameId }) => {
   const { getAllPlayers } = usePlayerQuery(gameId);
-
   const { data } = getAllPlayers;
-  console.log(data);
+
   const allPlayers = data?.allPlayers as PlayerType[];
-  console.log(data);
-  console.log("allPlayer", allPlayers);
+
   return (
-    <div>
+    <div className="playerComponent">
       {allPlayers &&
-        allPlayers.length === 0 &&
+        allPlayers.length > 0 &&
         allPlayers?.map((player: PlayerType) => (
-          <p key={player._id}>{player.name}</p>
+          <PlayerCard key={player._id} player={player} />
         ))}
+      <CreatePlayer gameId={gameId} />
     </div>
   );
 };
 
-export default GamePage;
+export default PlayerList;

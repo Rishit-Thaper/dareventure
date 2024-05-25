@@ -8,7 +8,7 @@ interface GameCardProps {
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
   return (
     <div className="gameCard">
-      <Link href={`/game/${game._id}`}>
+      <Link href={`/gamePlayers/${game._id}`}>
         <h4>Room Name: {game.name}</h4>
         <p>
           Type:{" "}
