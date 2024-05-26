@@ -8,6 +8,7 @@ const Loader = () => {
         visible={true}
         height="80"
         width="80"
+        backgroundColor="#104977"
         ariaLabel="fidget-spinner-loading"
         wrapperStyle={{}}
         wrapperClass="fidget-spinner-wrapper"

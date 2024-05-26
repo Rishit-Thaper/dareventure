@@ -15,7 +15,7 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
     formData.gameId = gameId;
     addPlayerMutation.mutate(formData, {
       onSuccess: () => {
-        toast.dismiss()
+        toast.dismiss();
         toast.success("Player Added");
         reset();
         if (dialogRef.current) {
@@ -38,6 +38,7 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
   const closeModal = () => {
     if (dialogRef.current) {
       dialogRef.current.close();
+      reset()
     }
   };
   return (
@@ -45,9 +46,6 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
       <button onClick={showModal}>Add Player</button>
 
       <dialog ref={dialogRef}>
-        <button onClick={closeModal} className="close-button">
-          &times;
-        </button>
         <form onSubmit={handleSubmit(createPlayer)}>
           <input
             type="text"
@@ -58,7 +56,10 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
                 value.trim() !== "" || "Name cannot be just whitespace",
             })}
           />
-          <button>Submit</button>
+          <button type="submit">Add</button>
+          <button type="button" id="danger" onClick={closeModal}>
+            Close
+          </button>
         </form>
       </dialog>
     </>

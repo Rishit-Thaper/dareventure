@@ -1,6 +1,7 @@
 "use client";
 import Loader from "@/components/Loader";
 import dynamic from "next/dynamic";
+import { IoIosArrowBack } from "react-icons/io";
 
 const GameList = dynamic(() => import("@/components/GameList"), {
   loading: () => <Loader />,
@@ -10,6 +11,7 @@ const GameList = dynamic(() => import("@/components/GameList"), {
 const AllGames = () => {
   return (
     <div className="gameComponent">
+
       <GameList />
     </div>
   );

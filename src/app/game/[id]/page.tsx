@@ -24,13 +24,13 @@ const MainGamePage = () => {
       {game && (
         <>
           {game.type === "tod" && (
-            <TruthOrDare category={game.rating} players={players} />
+            <TruthOrDare category={game.rating} players={players} game={game!}/>
           )}
           {game.type === "nhie" && (
-            <NeverEver category={game.rating} players={players} />
+            <NeverEver category={game.rating} players={players} game={game!}/>
           )}
           {game.type === "wyr" && (
-            <WouldYouRather category={game.rating} players={players} />
+            <WouldYouRather category={game.rating} players={players} game={game!}/>
           )}
         </>
       )}

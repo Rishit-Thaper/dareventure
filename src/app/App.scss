@@ -15,6 +15,18 @@ body {
   color: $color-2;
 }
 
+#warn {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  #not-found {
+    padding: 1rem;
+  }
+}
+#danger {
+  @include buttonStyle($color-4, $color-2, $danger-color);
+  margin-top: 2rem;
+}
 .header {
   text-align: center;
   padding: 0.4rem 0.8rem;
@@ -50,10 +62,10 @@ body {
 }
 
 .addForm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   form {
     h4 {
       margin-bottom: 1rem;
@@ -92,6 +104,9 @@ body {
       @include buttonStyle($color-4, $color-2, $color-5);
       margin-top: 1rem;
     }
+    #danger{
+      margin-top: 1rem;
+    }
   }
 }
 
@@ -109,40 +124,66 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   gap: 1rem;
 
   dialog {
     position: fixed;
     top: 50%;
+    width: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    background-color: white;
+    padding: 1.5rem;
+    background-color: $color-1;
     z-index: 1000;
-
+    form {
+      input {
+        width: 100%;
+        padding: 0.4rem 0.8rem;
+        background-color: $color-3;
+        outline: none;
+        color: $color-2;
+        border: none;
+        border: 1px solid $color-3;
+        border-radius: 10px;
+        transition: 0.3s ease-in-out;
+        &:focus {
+          border: 1px solid $color-2;
+        }
+      }
+      button {
+        margin-right: 1rem;
+      }
+      #danger {
+        margin-top: 1rem;
+      }
+    }
     &::backdrop {
       background-color: rgba(0, 0, 0, 0.5);
     }
-    .close-button {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background: none;
-      border: none;
-      font-size: 24px;
+  }
+}
+.gameComponent {
+  .gameHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-right: 2rem;
+    @include custom(330px) {
+      margin-right: 2rem;
+    }
+    svg {
       cursor: pointer;
-      color: #aaa;
     }
-
-    .close-button:hover {
-      color: #666;
-    }
-    button {
-      margin-top: 20px;
+    h3 {
+      @include custom(330px) {
+        font-size: 1rem;
+      }
     }
   }
 }
@@ -183,20 +224,53 @@ body {
     color: $danger-color;
   }
 }
-.gamePage{
+.gamePage {
   text-align: center;
   padding: 1rem;
-  p{
+  div {
+    text-align: center;
+    h4{
+      margin-top: 2rem;
+    }
+  }
+  p {
     margin-top: 1rem;
   }
-  button{
+  #question{
+    font-size: 1.5rem;
+  }
+  button {
     @include buttonStyle($color-4, $color-2, $color-7);
+    margin-top: 1rem;
+    width: 50%;
+    &:disabled {
+      background-color: $color-3;
+      cursor: not-allowed;
+      &:hover {
+        color: $color-2;
+      }
+    }
+  }
+  .gameButtons {
+    button {
+      width: 50%;
+    }
+  }
+  #danger{
+    width: 50%;
     margin-top: 1rem;
   }
 }
-#start{
+#start {
   text-align: center;
-  button{
+  button {
     @include buttonStyle($color-4, $color-2, $color-7);
+    &:disabled {
+      background-color: $color-3;
+      cursor: not-allowed;
+      &:hover {
+        color: $color-2;
+      }
+    }
   }
 }

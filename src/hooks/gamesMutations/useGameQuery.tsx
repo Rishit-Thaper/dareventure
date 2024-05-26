@@ -17,7 +17,6 @@ export const useGameQuery = (userId?: string, id?: string) => {
       return apiGetAllGames(userId!);
     },
     enabled: !!userId,
-    ...queryOptions
   });
   return { getSingleGame, getAllGames };
 };

@@ -24,7 +24,9 @@ const CreateGameForm: React.FC<formProps> = ({ type }) => {
   } else {
     id = creatorId;
   }
-
+  const handleClose = () => {
+    router.replace("/");
+  };
   const createGame: SubmitHandler<GameBody> = async (formData) => {
     formData.type = type;
     formData.creatorId = id;
@@ -76,6 +78,8 @@ const CreateGameForm: React.FC<formProps> = ({ type }) => {
           </div>
         </div>
         <button type="submit">Create Game</button>
+        <button type="button" onClick={handleClose} id="danger">Go Back</button>
+
       </form>
     </div>
   );
