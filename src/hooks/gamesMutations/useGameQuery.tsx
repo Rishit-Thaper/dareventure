@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { apiGetAllGames, apiGetSingleGame } from "@/services/gameServices";
+import { queryOptions } from "@/constants/ExtraConstants";
 
 export const useGameQuery = (userId?: string, id?: string) => {
   const getSingleGame = useQuery({
@@ -8,7 +9,7 @@ export const useGameQuery = (userId?: string, id?: string) => {
       return apiGetSingleGame(id!);
     },
     enabled: !!id,
-    
+    ...queryOptions
   });
   const getAllGames = useQuery({
     queryKey: ["games", userId],
@@ -16,6 +17,7 @@ export const useGameQuery = (userId?: string, id?: string) => {
       return apiGetAllGames(userId!);
     },
     enabled: !!userId,
+    ...queryOptions
   });
   return { getSingleGame, getAllGames };
 };

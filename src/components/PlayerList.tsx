@@ -23,9 +23,13 @@ const PlayerList: React.FC<GamePageProps> = ({ gameId }) => {
           ))}
         <CreatePlayer gameId={gameId} />
       </div>
-      <Link href={`/game/${gameId}`}>
-        <button disabled={!canStartGame}>Start the Game</button>
-      </Link>
+      <div id="start">
+        <Link href={`/game/${gameId}`}>
+          <button disabled={!canStartGame} >
+            Start the Game
+          </button>
+        </Link>
+      </div>
     </>
   );
 };

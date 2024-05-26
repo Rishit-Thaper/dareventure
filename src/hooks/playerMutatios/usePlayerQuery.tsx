@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { apiGetAllPlayers } from "@/services/playerServices";
+import { queryOptions } from "@/constants/ExtraConstants";
 
 export const usePlayerQuery = (id: string | string[]) => {
   const getAllPlayers = useQuery({
@@ -7,6 +8,7 @@ export const usePlayerQuery = (id: string | string[]) => {
     queryFn: () => {
       return apiGetAllPlayers(id);
     },
+    ...queryOptions
   });
   return { getAllPlayers };
 };

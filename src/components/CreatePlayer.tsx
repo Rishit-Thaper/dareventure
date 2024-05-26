@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { usePlayerMutations } from "@/hooks/playerMutatios/usePlayerMutations";
 import { PlayerType } from "@/types/global";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -15,6 +15,7 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
     formData.gameId = gameId;
     addPlayerMutation.mutate(formData, {
       onSuccess: () => {
+        toast.dismiss()
         toast.success("Player Added");
         reset();
         if (dialogRef.current) {
@@ -23,7 +24,11 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
       },
     });
   };
-
+  useEffect(() => {
+    if (addPlayerMutation.isPending) {
+      toast.loading("Adding");
+    }
+  }, [addPlayerMutation.isPending]);
   const showModal = () => {
     if (dialogRef.current) {
       dialogRef.current.showModal();
@@ -40,9 +45,9 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
       <button onClick={showModal}>Add Player</button>
 
       <dialog ref={dialogRef}>
-      <button onClick={closeModal} className="close-button">
-        &times;
-      </button>
+        <button onClick={closeModal} className="close-button">
+          &times;
+        </button>
         <form onSubmit={handleSubmit(createPlayer)}>
           <input
             type="text"

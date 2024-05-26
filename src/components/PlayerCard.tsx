@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { usePlayerMutations } from "@/hooks/playerMutatios/usePlayerMutations";
 import { PlayerType } from "@/types/global";
 import { IoMdRemoveCircleOutline } from "react-icons/io";
@@ -12,10 +12,16 @@ const PlayerCard: React.FC<CardProps> = ({ player }) => {
   const deletePlayer = async (playerId: string) => {
     await deletePlayerMutation.mutateAsync(playerId, {
       onSuccess: () => {
+        toast.dismiss();
         toast.success("Player removed");
       },
     });
   };
+  useEffect(()=>{
+    if(deletePlayerMutation.isPending){
+      toast.loading("Removing")
+    }
+  },[deletePlayerMutation.isPending])
   return (
     <div className="player">
       <p>{player.name}</p>

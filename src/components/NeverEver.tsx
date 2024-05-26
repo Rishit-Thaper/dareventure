@@ -42,8 +42,9 @@ const WouldYouRather: React.FC<GameProps> = ({ category, players }) => {
       {isLoading ? (
         <Loader />
       ) : (
-        <>
-          {clicked ? question : `${players[index]?.name} Ready ?`}
+        <div className="gamePage">
+          <h3>Never Have I Ever</h3>
+          <p>{clicked ? question : `${players[index]?.name} Ready ?`}</p>
 
           {(!clicked || done) && <button onClick={handleNextClick}>Yes</button>}
           {clicked && (
@@ -58,7 +59,7 @@ const WouldYouRather: React.FC<GameProps> = ({ category, players }) => {
               </button>
             </>
           )}
-        </>
+        </div>
       )}
     </>
   );
