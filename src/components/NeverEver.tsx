@@ -11,7 +11,6 @@ const WouldYouRather: React.FC<GameProps> = ({ category, players, game }) => {
   const [clicked, setClicked] = useState<boolean>(false);
   const [done, setDone] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
-  console.log(index);
   const { getNhieQuestion } = useQuestionQuery("", category);
   const { data, isLoading } = getNhieQuestion;
   const handleIndex = () => {

@@ -9,13 +9,10 @@ import WouldYouRather from "@/components/WouldYouRather";
 import Loader from "@/components/Loader";
 const MainGamePage = () => {
   const { id } = useParams<{ id: string }>();
-  console.log(id);
   const { getSingleGame } = useGameQuery(undefined, id);
   const { data, isLoading } = getSingleGame;
   const game = data?.game?.gameData as GameType;
   const players = data?.game?.playerData as PlayerType[];
-  console.log("games", game?.type);
-  console.log("players", players);
   if (isLoading) {
     return <Loader />;
   }

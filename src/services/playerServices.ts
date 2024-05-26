@@ -3,7 +3,7 @@ import {
   DELETE_PLAYER,
   ADD_PLAYER,
 } from "@/constants/ApiConstants";
-import { postRequest,  deleteRequest } from "@/services/ApiHelper";
+import { postRequest, deleteRequest } from "@/services/ApiHelper";
 import { PlayerBody } from "@/types/global";
 
 export const apiAddPlayer = async (data: PlayerBody) => {
@@ -16,7 +16,7 @@ export const apiDeletePlayer = async (id: string) => {
   return response;
 };
 
-export const apiGetAllPlayers = async (gameId: string | string[]) => {
+export const apiGetAllPlayers = async (gameId: string) => {
   const response = await postRequest(GET_ALL_PLAYERS, { gameId });
   return response;
 };

@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Link from "next/link";
 interface CreatePlayerProps {
-  gameId: string | string[];
+  gameId: string;
 }
 const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
   const { addPlayerMutation } = usePlayerMutations();
@@ -38,7 +38,7 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
   const closeModal = () => {
     if (dialogRef.current) {
       dialogRef.current.close();
-      reset()
+      reset();
     }
   };
   return (

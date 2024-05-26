@@ -16,7 +16,6 @@ export const createPlayer = async (data: PlayerBody) => {
 
 export const allPlayers = async (gameId: string) => {
   try {
-    console.log(gameId);
     const playersData = await Player.find({ gameId: gameId });
     if (playersData && playersData.length > 0) {
       return playersData;

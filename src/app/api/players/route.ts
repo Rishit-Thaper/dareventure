@@ -1,8 +1,6 @@
-import Player from "@/models/playerModel";
 import { dbConnect } from "@/db/dbConfig";
 import { createPlayer } from "@/controllers/playerApiServices";
 import { NextRequest, NextResponse } from "next/server";
-import mongoose from "mongoose";
 
 dbConnect();
 
@@ -11,7 +9,7 @@ export async function POST(req: NextRequest) {
     const { name, gameId } = await req.json();
     const data = {
       name,
-      gameId: mongoose.Types.ObjectId.createFromHexString(gameId),
+      gameId: gameId,
     };
     const response = await createPlayer(data);
     if (response) {

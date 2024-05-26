@@ -5,7 +5,7 @@ import PlayerCard from "./PlayerCard";
 import CreatePlayer from "./CreatePlayer";
 import Link from "next/link";
 interface GamePageProps {
-  gameId: string | string[];
+  gameId: string;
 }
 const PlayerList: React.FC<GamePageProps> = ({ gameId }) => {
   const { getAllPlayers } = usePlayerQuery(gameId);

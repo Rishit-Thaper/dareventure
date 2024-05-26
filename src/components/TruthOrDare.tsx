@@ -18,7 +18,6 @@ const TruthOrDare: React.FC<GameProps> = ({ category, players, game }) => {
   const [done, setDone] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
   const router = useRouter();
-  console.log(index);
   const { getTodQuestion } = useQuestionQuery(type, category);
   const { data, isLoading } = getTodQuestion;
   const handleIndex = () => {

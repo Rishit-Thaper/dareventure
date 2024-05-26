@@ -9,7 +9,7 @@ const PlayerList = dynamic(() => import("@/components/PlayerList"), {
   ssr: false,
 });
 const GamePage = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
   return (
     <>

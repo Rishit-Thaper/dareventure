@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { getDataFromLocal, saveToLocal } from "@/storage/storage";
 import { creatorKey } from "@/constants/ExtraConstants";
 interface formProps {
-  type: string | string[];
+  type: string;
 }
 const CreateGameForm: React.FC<formProps> = ({ type }) => {
   const router = useRouter();

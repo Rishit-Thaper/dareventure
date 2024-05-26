@@ -25,6 +25,6 @@ export async function POST(req: NextRequest) {
       );
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
