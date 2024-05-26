@@ -23,16 +23,26 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
       },
     });
   };
+
   const showModal = () => {
     if (dialogRef.current) {
       dialogRef.current.showModal();
     }
   };
 
+  const closeModal = () => {
+    if (dialogRef.current) {
+      dialogRef.current.close();
+    }
+  };
   return (
     <>
       <button onClick={showModal}>Add Player</button>
+
       <dialog ref={dialogRef}>
+      <button onClick={closeModal} className="close-button">
+        &times;
+      </button>
         <form onSubmit={handleSubmit(createPlayer)}>
           <input
             type="text"
@@ -46,9 +56,6 @@ const CreatePlayer: React.FC<CreatePlayerProps> = ({ gameId }) => {
           <button>Submit</button>
         </form>
       </dialog>
-      <Link href={`/game/${gameId}`}>
-        <button>Start the Game</button>
-      </Link>
     </>
   );
 };

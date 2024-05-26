@@ -1,42 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { PlayerType } from "@/types/global";
 import { useQuestionQuery } from "@/hooks/questionMutations/useQuestionQuery";
 import Loader from "./Loader";
+import { GameProps } from "./TruthOrDare";
 
-export interface GameProps {
-  category: string;
-  players: PlayerType[];
-}
 
 const WouldYouRather: React.FC<GameProps> = ({ category, players }) => {
-  const [type, setType] = useState<string>("");
   const [question, setQuestion] = useState<string>("");
   const [clicked, setClicked] = useState<boolean>(false);
   const [done, setDone] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false); // Add isLoading state
-
-  const { getTodQuestion } = useQuestionQuery(type, category);
-  const { data } = getTodQuestion;
-
-  useEffect(() => {
-    setIsLoading(getTodQuestion.isLoading); // Update isLoading state
-  }, [getTodQuestion.isLoading]);
-
-  useEffect(() => {
-    if (type && data) {
-      setQuestion(data?.randomQuestion || "");
+  const [index, setIndex] = useState<number>(0);
+  console.log(index);
+  const { getWyrQuestion } = useQuestionQuery("", category);
+  const { data, isLoading } = getWyrQuestion;
+  const handleIndex = () => {
+    if (index < players.length - 1) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
     }
-  }, [data, type]);
+  };
+
+  useEffect(() => {
+    if (!clicked) {
+      setQuestion(data?.randomQuestion);
+    }
+  }, [data, clicked, index]);
 
   const handleNextClick = () => {
     setClicked(true);
     setDone(false);
   };
-
+  
   const handleDoneClick = () => {
     setDone(true);
-    setType("");
     setClicked(false);
+    getWyrQuestion.refetch();
   };
 
   return (
@@ -45,18 +43,18 @@ const WouldYouRather: React.FC<GameProps> = ({ category, players }) => {
         <Loader />
       ) : (
         <>
-          {type ? question : "Next Player Ready?"}
-          {(!clicked || done) && <button onClick={handleNextClick}>Next</button>}
+          {clicked ? question : `${players[index]?.name} Ready ?`}
+
+          {(!clicked || done) && <button onClick={handleNextClick}>Yes</button>}
           {clicked && (
             <>
-              {!type && (
-                <>
-                  <button onClick={() => setType("truth")}>Truth</button>
-                  <button onClick={() => setType("dare")}>Dare</button>
-                </>
-              )}
-              <button onClick={handleDoneClick} disabled={!type}>
-                Done
+              <button
+                onClick={() => {
+                  handleDoneClick();
+                  handleIndex();
+                }}
+              >
+                Next
               </button>
             </>
           )}

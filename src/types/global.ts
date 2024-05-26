@@ -5,6 +5,7 @@ export type GameType = {
   type: string | string[];
   rating: string;
   creatorId: string;
+  createdAt: string;
 };
 export type GameBody = Omit<GameType, "_id">;
 

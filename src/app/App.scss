@@ -127,7 +127,20 @@ body {
     &::backdrop {
       background-color: rgba(0, 0, 0, 0.5);
     }
+    .close-button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #aaa;
+    }
 
+    .close-button:hover {
+      color: #666;
+    }
     button {
       margin-top: 20px;
     }

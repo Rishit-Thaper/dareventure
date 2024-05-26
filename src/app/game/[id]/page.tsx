@@ -14,21 +14,26 @@ const MainGamePage = () => {
   const { data, isLoading } = getSingleGame;
   const game = data?.game?.gameData as GameType;
   const players = data?.game?.playerData as PlayerType[];
-  console.log("games", game);
+  console.log("games", game?.type);
   console.log("players", players);
   if (isLoading) {
     return <Loader />;
   }
   return (
     <>
-      {game &&
-        (game?.type === "tod" ? (
-          <TruthOrDare category={game?.rating} players={players} />
-        ) : game?.type === "nhie" ? (
-          <NeverEver category={game?.rating} players={players} />
-        ) : (
-          <WouldYouRather category={game?.rating} players={players} />
-        ))}
+      {game && (
+        <>
+          {game.type === "tod" && (
+            <TruthOrDare category={game.rating} players={players} />
+          )}
+          {game.type === "nhie" && (
+            <NeverEver category={game.rating} players={players} />
+          )}
+          {game.type === "wyr" && (
+            <WouldYouRather category={game.rating} players={players} />
+          )}
+        </>
+      )}
     </>
   );
 };

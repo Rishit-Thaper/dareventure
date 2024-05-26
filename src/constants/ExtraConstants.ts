@@ -13,11 +13,17 @@ export const games = [
   },
 ];
 
-export const TOD = 'tod';
-export const WYR = 'wyr';
-export const NHIE = 'nhie';
+export const TOD = "tod";
+export const WYR = "wyr";
+export const NHIE = "nhie";
 
-export const ADULT = 'adult';
-export const PG = 'pg';
+export const ADULT = "adult";
+export const PG = "pg";
 
 export const creatorKey = "creator";
+
+export const queryOptions = {
+  refetchOnMount: false,
+  refetchOnWindowFocus: false,
+  refetchOnReconnect: false,
+};

@@ -15,13 +15,13 @@ const GameList = () => {
   if (!isLoading && (!games || games.length === 0)) {
     return <p>No Games Found</p>;
   }
-
+  const sortedGames = games?.slice().sort((a: GameType, b: GameType) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   return (
     <div className="gameListComponent">
       <>
         {games &&
           games.length > 0 &&
-          games.map((game: GameType, key: number) => (
+          sortedGames.map((game: GameType, key: number) => (
             <GameCard key={key} game={game} />
           ))}
       </>

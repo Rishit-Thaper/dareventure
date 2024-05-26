@@ -13,14 +13,17 @@ const TruthOrDare: React.FC<GameProps> = ({ category, players }) => {
   const [question, setQuestion] = useState<string>("");
   const [clicked, setClicked] = useState<boolean>(false);
   const [done, setDone] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false); // Add isLoading state
-
+  const [index, setIndex] = useState<number>(0);
+  console.log(index);
   const { getTodQuestion } = useQuestionQuery(type, category);
-  const { data } = getTodQuestion;
-
-  useEffect(() => {
-    setIsLoading(getTodQuestion.isLoading); // Update isLoading state
-  }, [getTodQuestion.isLoading]);
+  const { data, isLoading } = getTodQuestion;
+  const handleIndex = () => {
+    if (index < players.length - 1) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+  };
 
   useEffect(() => {
     if (type && data) {
@@ -45,8 +48,9 @@ const TruthOrDare: React.FC<GameProps> = ({ category, players }) => {
         <Loader />
       ) : (
         <>
-          {type ? question : "Next Player Ready?"}
-          {(!clicked || done) && <button onClick={handleNextClick}>Next</button>}
+          {type ? question : `${players[index]?.name} Ready ?`}
+
+          {(!clicked || done) && <button onClick={handleNextClick}>Yes</button>}
           {clicked && (
             <>
               {!type && (
@@ -55,7 +59,13 @@ const TruthOrDare: React.FC<GameProps> = ({ category, players }) => {
                   <button onClick={() => setType("dare")}>Dare</button>
                 </>
               )}
-              <button onClick={handleDoneClick} disabled={!type}>
+              <button
+                onClick={() => {
+                  handleDoneClick();
+                  handleIndex();
+                }}
+                disabled={!type}
+              >
                 Done
               </button>
             </>
