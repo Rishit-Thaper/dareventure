@@ -1,11 +1,10 @@
 import { dbConnect } from "@/db/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
-import { getGame } from "@/services/gameApiServices";
-
+import { getGame } from "@/controllers/gameApiServices";
+dbConnect();
 export async function GET(req: NextRequest) {
   try {
     const id = req.url.split("games/")[1];
-    console.log(id);
     const gameData = await getGame(id);
     if (gameData) {
       return NextResponse.json(
@@ -22,6 +21,6 @@ export async function GET(req: NextRequest) {
       );
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }

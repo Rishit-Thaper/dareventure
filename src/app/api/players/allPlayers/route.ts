@@ -1,6 +1,6 @@
 import { dbConnect } from "@/db/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
-import { allPlayers } from "@/services/playerApiServices";
+import { allPlayers } from "@/controllers/playerApiServices";
 
 dbConnect();
 

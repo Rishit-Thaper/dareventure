@@ -1,11 +1,10 @@
 import { dbConnect } from "@/db/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
-import { deletePlayer } from "@/services/playerApiServices";
+import { deletePlayer } from "@/controllers/playerApiServices";
 dbConnect();
 export async function DELETE(req: NextRequest) {
   try {
     const id = req.url.split("players/")[1];
-    console.log(id);
     const deletedPlayer = await deletePlayer(id);
     if (deletedPlayer) {
       return NextResponse.json(
@@ -22,6 +21,6 @@ export async function DELETE(req: NextRequest) {
       );
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }

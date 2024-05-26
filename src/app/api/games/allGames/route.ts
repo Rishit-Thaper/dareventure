@@ -1,15 +1,18 @@
 import { dbConnect } from "@/db/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
-import { allGames } from "@/services/gameApiServices";
+import { allGames } from "@/controllers/gameApiServices";
 
 dbConnect();
 
 export async function POST(req: NextRequest) {
   try {
-    const { creatorId } = await req.json();
-    const response = await allGames(creatorId);
+    const { id } = await req.json();
+    const response = await allGames(id);
     if (response) {
-      return NextResponse.json({ success: true, allGames: response }, { status: 200 });
+      return NextResponse.json(
+        { success: true, allGames: response },
+        { status: 200 }
+      );
     } else {
       return NextResponse.json(
         {

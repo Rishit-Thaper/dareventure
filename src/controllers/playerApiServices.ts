@@ -1,6 +1,6 @@
 import Player from "@/models/playerModel";
-import { PlayerType } from "@/types/global";
-export const createPlayer = async (data: PlayerType) => {
+import { PlayerBody } from "@/types/global";
+export const createPlayer = async (data: PlayerBody) => {
   try {
     const createPlayer = await Player.create(data);
     if (createPlayer) {
@@ -16,6 +16,7 @@ export const createPlayer = async (data: PlayerType) => {
 
 export const allPlayers = async (gameId: string) => {
   try {
+    console.log(gameId);
     const playersData = await Player.find({ gameId: gameId });
     if (playersData && playersData.length > 0) {
       return playersData;
